@@ -41,11 +41,10 @@
           </div>
        </div>
        <div class="text-center">
-          @can('power-start', $server)<button class="btn btn-success disabled" data-attr="power" data-action="start"><i class="fa fa-play-circle"> 開機</i></button>@endcan
-          @can('power-restart', $server)<button class="btn btn-primary disabled" data-attr="power" data-action="restart"><i class="fa fa-refresh"> 重新開機</i></button>@endcan
-          @can('power-stop', $server)<button class="btn btn-danger disabled" data-attr="power" data-action="stop"><i class="fa fa-stop-circle"> 關機</i></button>@endcan
-          @can('power-kill', $server)<button class="btn btn-danger disabled" data-attr="power" data-action="kill"><i class="fa fa-times-circle"> 強制關機</i></button>@endcan
-          <a href="{{ route('server.console', $server->uuidShort) }}" target="_blank"><span class="btn btn-info"><i class="fa fa-external-link"> 主控台（以新視窗開啟）</i></span></a>
+          @can('power-start', $server)<button class="btn btn-success disabled" data-attr="power" data-action="start">Start</button>@endcan
+          @can('power-restart', $server)<button class="btn btn-primary disabled" data-attr="power" data-action="restart">Restart</button>@endcan
+          @can('power-stop', $server)<button class="btn btn-danger disabled" data-attr="power" data-action="stop">Stop</button>@endcan
+          @can('power-kill', $server)<button class="btn btn-danger disabled" data-attr="power" data-action="kill">Kill</button>@endcan
        </div>
    </div>
 </div>
@@ -55,7 +54,7 @@
          <div class="card-header bg-transparent">
             <div class="row align-items-center">
                <div class="col">
-                  <h3 class="mb-0">記憶體使用量</h3>
+                  <h3 class="mb-0">Memory Usage</h3>
                </div>
             </div>
          </div>
@@ -69,7 +68,7 @@
          <div class="card-header bg-transparent">
             <div class="row align-items-center">
                <div class="col">
-                  <h3 class="mb-0">CPU 使用量</h3>
+                  <h3 class="mb-0">CPU Usage</h3>
                </div>
             </div>
          </div>

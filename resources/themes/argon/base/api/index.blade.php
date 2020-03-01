@@ -24,10 +24,10 @@
             <div class="card-header border-0">
                <div class="row align-items-center">
                   <div class="col">
-                     <h3 class="mb-0">API金鑰列表</h3>
+                     <h3 class="mb-0">Credentials List</h3>
                   </div>
                   <div class="col text-right">
-                     <a href="{{ route('account.api.new') }}" class="btn btn-sm btn-primary">創建新的API金鑰</a>
+                     <a href="{{ route('account.api.new') }}" class="btn btn-sm btn-primary">Create New</a>
                   </div>
                </div>
             </div>
@@ -35,10 +35,10 @@
                 <table class="table align-items-center table-flush">
                   <thead class="thead-light">
                     <tr>
-                        <th>金鑰</th>
-                        <th>說明</th>
-                        <th>最後使用</th>
-                        <th>創建時間</th>
+                        <th>Key</th>
+                        <th>Memo</th>
+                        <th>Last Used</th>
+                        <th>Created</th>
                         <th></th>
                     </tr>
                   </thead>
@@ -92,8 +92,8 @@
             event.preventDefault();
             swal({
                 type: 'error',
-                title: '移除您的API金鑰',
-                text: '當您移除了此API金鑰後，使用此金鑰的所有應用都將立即失效',
+                title: 'Revoke API Key',
+                text: 'Once this API key is revoked any applications currently using it will stop working.',
                 showCancelButton: true,
                 allowOutsideClick: true,
                 closeOnConfirm: false,
@@ -111,15 +111,15 @@
                     swal({
                         type: 'success',
                         title: '',
-                        text: 'API金鑰移除成功!'
+                        text: 'API Key has been revoked.'
                     });
                     self.parent().parent().slideUp();
                 }).fail(function (jqXHR) {
                     console.error(jqXHR);
                     swal({
                         type: 'error',
-                        title: '可....可惡',
-                        text: '移除API金鑰時發生了未知的錯誤!'
+                        title: 'Whoops!',
+                        text: 'An error occurred while attempting to revoke this key.'
                     });
                 });
             });

@@ -22,15 +22,15 @@
                   <div class="card-header bg-transparent">
                       <div class="row align-items-center">
                         <div class="col">
-                          <h3 class="mb-0">創建API金鑰</h3>
+                          <h3 class="mb-0">New API Key</h3>
                         </div>
                       </div>
                   </div>
                     <div class="card-body">
                         <div class="form-group">
-                            <label class="control-label" for="memoField">說明</label>
+                            <label class="control-label" for="memoField">Description</label>
                             <input id="memoField" type="text" name="memo" class="form-control" value="{{ old('memo') }}">
-                            <p class="text-muted small no-margin">為此API金鑰加上說明，後續處理一目了然!</p>
+                            <p class="text-muted small no-margin">Set an easy to understand description for this API key to help you identify it later on.</p>
                         </div>
                     </div>
                 </div>
@@ -40,18 +40,18 @@
                   <div class="card-header bg-transparent">
                       <div class="row align-items-center">
                         <div class="col">
-                          <h3 class="mb-0">進階設定</h3>
+                          <h3 class="mb-0">Restrictions</h3>
                         </div>
                       </div>
                   </div>
                     <div class="card-body">
                         <div class="form-group">
-                            <label class="control-label" for="memoField">限制IP存取</label>
+                            <label class="control-label" for="memoField">Allowed Connection IPs</label>
                             <textarea id="allowedIps" name="allowed_ips" class="form-control" rows="5">{{ old('allowed_ips') }}</textarea>
-                            <p class="text-muted small no-margin">若您在此輸入IP，那此API金鑰只能使用於您輸入之IP地址!</p>
+                            <p class="text-muted small no-margin">If you would like to limit this API key to specific IP addresses enter them above, one per line. CIDR notation is allowed for each IP address. Leave blank to allow any IP address.</p>
                         </div>
                         {{ csrf_field() }}
-                        <button type="submit" class="btn btn-primary btn-sm pull-right">創建API金鑰</button>
+                        <button type="submit" class="btn btn-primary btn-sm pull-right">Create API Key</button>
                     </div>
                 </div>
             </div>

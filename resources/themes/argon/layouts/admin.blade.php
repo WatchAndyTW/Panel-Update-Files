@@ -40,7 +40,7 @@
    <body>
       <nav class="navbar navbar-vertical fixed-left navbar-expand-md navbar-light bg-white" id="sidenav-main">
          <div class="container-fluid">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#sidenav-collapse-main" aria-controls="sidenav-main" aria-expanded="false" aria-label="開啟導覽列">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#sidenav-collapse-main" aria-controls="sidenav-main" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
             </button>
             <a class="navbar-brand pt-1" href="{{ route('index') }}" style="padding-top: .50rem !important;">
@@ -57,7 +57,7 @@
                   </a>
                   <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-right">
                      <div class=" dropdown-header noti-title">
-                        <h6 class="text-overflow m-0">歡迎使用｜目前權限：管理員</h6>
+                        <h6 class="text-overflow m-0">Welcome!</h6>
                      </div>
                      <a href="{{ route('account') }}" class="dropdown-item">
                      <i class="fas fa-fw fa-user"></i>
@@ -65,7 +65,7 @@
                      </a>
                      <a href="{{ route('index') }}" class="dropdown-item">
                      <i class="fas fa-fw fa-times-circle"></i>
-                     <span>離開管理員面板</span>
+                     <span>Exit Admin Control</span>
                      </a>
                      <div class="dropdown-divider"></div>
                      <a href="{{ route('auth.logout') }}" class="dropdown-item logoutButton">
@@ -80,11 +80,11 @@
                   <div class="row">
                      <div class="col-6 collapse-brand">
                         <a href="{{ route('index') }}">
-                        <img src="https://i.imgur.com/F9hXLXT.png">
+                        <img src="{!! Theme::url('img/logo.png?t={cache-version}') !!}">
                         </a>
                      </div>
                      <div class="col-6 collapse-close">
-                        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#sidenav-collapse-main" aria-controls="sidenav-main" aria-expanded="false" aria-label="開啟導航欄">
+                        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#sidenav-collapse-main" aria-controls="sidenav-main" aria-expanded="false" aria-label="Toggle sidenav">
                         <span></span>
                         <span></span>
                         </button>
@@ -92,86 +92,69 @@
                   </div>
                </div>
                @yield('mobile-search')
-               <hr class="my-3">
-               <h6 class="navbar-heading text-muted">公告管理</h6>
-               <ul class="navbar-nav mb-md-3">
-                  <li class="nav-item">
-                     <a class="nav-link {{ Route::currentRouteName() !== 'admin.announcements' ?: 'active' }}" href="{{ route('admin.announcements') }}">
-                     <i class="fas fa-inbox"></i> 公告系統
-                     </a>
-                  </li>
-               </ul>
-               <hr class="my-3">
-               <h6 class="navbar-heading text-muted">系統資訊</h6>
-               <ul class="navbar-nav mb-md-3">
+               <ul class="navbar-nav">
                   <li class="nav-item">
                      <a class="nav-link {{ Route::currentRouteName() !== 'admin.index' ?: 'active' }}" href="{{ route('admin.index') }}">
-                     <i class="fas fa-home"></i> 面板資訊
+                     <i class="fas fa-home"></i> Overview
                      </a>
                   </li>
                   <li class="nav-item">
                      <a class="nav-link {{ Route::currentRouteName() !== 'admin.statistics' ?: 'active' }}" href="{{ route('admin.statistics') }}">
-                     <i class="fas fa-tachometer-alt"></i> 面板總覽
+                     <i class="fas fa-tachometer-alt"></i> Statistics
                      </a>
                   </li>
                   <li class="nav-item">
                      <a class="nav-link {{ ! starts_with(Route::currentRouteName(), 'admin.settings') ?: 'active' }}" href="{{ route('admin.settings')}}">
-                     <i class="fas fa-wrench"></i> 面板設定
+                     <i class="fas fa-wrench"></i> Settings
                      </a>
                   </li>
                   <li class="nav-item">
                      <a class="nav-link {{ ! starts_with(Route::currentRouteName(), 'admin.api') ?: 'active' }}" href="{{ route('admin.api.index')}}">
-                     <i class="fas fa-gamepad"></i> 應用程式 API
+                     <i class="fas fa-gamepad"></i> Application API
                      </a>
-                  </li>
-	                 </a>
                   </li>
                </ul>
                <hr class="my-3">
-               <h6 class="navbar-heading text-muted">系統管理</h6>
+               <h6 class="navbar-heading text-muted">Management</h6>
                <ul class="navbar-nav mb-md-3">
                   <li class="nav-item">
                      <a class="nav-link {{ ! starts_with(Route::currentRouteName(), 'admin.databases') ?: 'active' }}" href="{{ route('admin.databases') }}">
-                     <i class="fas fa-database"></i> 資料庫
+                     <i class="fas fa-database"></i> Databases
                      </a>
                   </li>
                   <li class="nav-item">
                      <a class="nav-link {{ ! starts_with(Route::currentRouteName(), 'admin.locations') ?: 'active' }}" href="{{ route('admin.locations') }}">
-                     <i class="fas fa-globe-americas"></i> 地區
+                     <i class="fas fa-globe-americas"></i> Locations
                      </a>
                   </li>
                   <li class="nav-item">
                      <a class="nav-link {{ ! starts_with(Route::currentRouteName(), 'admin.nodes') ?: 'active' }}" href="{{ route('admin.nodes') }}">
-                     <i class="fas fa-network-wired"></i> 節點
+                     <i class="fas fa-network-wired"></i> Nodes
                      </a>
                   </li>
                   <li class="nav-item">
                      <a class="nav-link {{ ! starts_with(Route::currentRouteName(), 'admin.servers') ?: 'active' }}" href="{{ route('admin.servers') }}">
-                     <i class="fas fa-server"></i> 伺服器
+                     <i class="fas fa-server"></i> Servers
                      </a>
                   </li>
                   <li class="nav-item">
                      <a class="nav-link {{ ! starts_with(Route::currentRouteName(), 'admin.users') ?: 'active' }}" href="{{ route('admin.users') }}">
-                     <i class="fas fa-users"></i> 使用者
+                     <i class="fas fa-users"></i> Users
                      </a>
-                  </li>
-                  </a>
                   </li>
                </ul>
                <hr class="my-3">
-               <h6 class="navbar-heading text-muted">服務管理</h6>
+               <h6 class="navbar-heading text-muted">Service Management</h6>
                <ul class="navbar-nav mb-md-3">
                   <li class="nav-item">
                      <a class="nav-link {{ ! starts_with(Route::currentRouteName(), 'admin.nests') ?: 'active' }}" href="{{ route('admin.nests') }}">
-                     <i class="fas fa-th-large"></i> 伺服器腳本
+                     <i class="fas fa-th-large"></i> Nests
                      </a>
                   </li>
                   <li class="nav-item">
                      <a class="nav-link {{ ! starts_with(Route::currentRouteName(), 'admin.packs') ?: 'active' }}" href="{{ route('admin.packs') }}">
-                     <i class="fas fa-archive"></i> 整合包
+                     <i class="fas fa-archive"></i> Packs
                      </a>
-                  </li>
-                     </a> 
                   </li>
                </ul>
             </div>
@@ -196,7 +179,7 @@
                      </a>
                      <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-right">
                         <div class=" dropdown-header noti-title">
-                           <h6 class="text-overflow m-0">歡迎使用｜目前權限：管理員</h6>
+                           <h6 class="text-overflow m-0">Welcome!</h6>
                         </div>
                         <a href="{{ route('account') }}" class="dropdown-item">
                         <i class="fas fa-fw fa-user"></i>
@@ -204,7 +187,7 @@
                         </a>
                         <a href="{{ route('index') }}" class="dropdown-item">
                         <i class="fas fa-fw fa-times-circle"></i>
-                        <span>離開管理員面板</span>
+                        <span>Exit Admin Control</span>
                         </a>
                         <div class="dropdown-divider"></div>
                         <a href="{{ route('auth.logout') }}" class="dropdown-item logoutButton">
@@ -264,12 +247,12 @@
 
                var that = this;
                swal({
-                   title: '您確定要登出面板？',
+                   title: 'Do you want to log out?',
                    type: 'warning',
                    showCancelButton: true,
                    confirmButtonColor: '#d9534f',
                    cancelButtonColor: '#d33',
-                   confirmButtonText: '登出'
+                   confirmButtonText: 'Log out'
                }, function () {
                    window.location = $(that).attr('href');
                });

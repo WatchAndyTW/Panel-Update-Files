@@ -30,7 +30,6 @@
         {!! Theme::css('vendor/sweetalert/sweetalert.min.css?t={cache-version}') !!}
         {!! Theme::css('vendor/animate/animate.min.css?t={cache-version}') !!}
         {!! Theme::css('css/style.css?t={cache-version}') !!}
-		{!! Theme::css('css/header.css?t={cache-version}') !!}
         <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -40,7 +39,7 @@
    <body>
       <nav class="navbar navbar-vertical fixed-left navbar-expand-md navbar-light bg-white" id="sidenav-main">
          <div class="container-fluid">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#sidenav-collapse-main" aria-controls="sidenav-main" aria-expanded="false" aria-label="開啟導覽列">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#sidenav-collapse-main" aria-controls="sidenav-main" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
             </button>
             <a class="navbar-brand pt-1" href="{{ route('index') }}" style="padding-top: .50rem !important;">
@@ -51,13 +50,13 @@
                   <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                      <div class="media align-items-center">
                         <span class="avatar avatar-sm rounded-circle">
-                        <img alt="使用者頭像" src="https://www.gravatar.com/avatar/{{ md5(strtolower(Auth::user()->email)) }}?s=160">
+                        <img alt="User Image" src="https://www.gravatar.com/avatar/{{ md5(strtolower(Auth::user()->email)) }}?s=160">
                         </span>
                      </div>
                   </a>
                   <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-right">
                      <div class=" dropdown-header noti-title">
-                        <h6 class="text-overflow m-0">歡迎使用｜目前權限：租用者</h6>
+                        <h6 class="text-overflow m-0">Welcome!</h6>
                      </div>
                      <a href="{{ route('account') }}" class="dropdown-item">
                      <i class="fas fa-fw fa-user"></i>
@@ -82,7 +81,7 @@
                   <div class="row">
                      <div class="col-6 collapse-brand">
                         <a href="{{ route('index') }}">
-                        <img src="https://p-panel.amtz.xyz/themes/argon/img/logo.png">
+                        <img src="{!! Theme::url('img/logo.png?t={cache-version}') !!}">
                         </a>
                      </div>
                      <div class="col-6 collapse-close">
@@ -103,18 +102,7 @@
                      </div>
                   </div>
                </form>
-               <hr class="my-3">
-               <h6 class="navbar-heading text-muted">面板公告</h6>
-               <ul class="navbar-nav mb-md-3">
-                   <li class="nav-item">
-                     <a class="nav-link {{ Route::currentRouteName() !== 'announcements' ?: 'active' }}" href="{{ route('announcements')}}">
-                     <i class="fas fa-inbox"></i> 公告區域
-                     </a>
-                  </li>
-                  </ul>
-               <hr class="my-3">
-               <h6 class="navbar-heading text-muted">帳號管理</h6>
-               <ul class="navbar-nav mb-md-3">
+               <ul class="navbar-nav">
                   <li class="nav-item">
                      <a class="nav-link {{ Route::currentRouteName() !== 'account' ?: 'active' }}" href="{{ route('account') }}">
                      <i class="fas fa-user"></i> @lang('navigation.account.my_account')
@@ -138,7 +126,7 @@
                </ul>
                @if (isset($server->name) && isset($node->name))
                <hr class="my-3">
-               <h6 class="navbar-heading text-muted">伺服器控制</h6>
+               <h6 class="navbar-heading text-muted">@lang('navigation.server.header')</h6>
                <ul class="navbar-nav mb-md-3">
                   <li class="nav-item">
                      <a class="nav-link {{ Route::currentRouteName() !== 'server.index' ?: 'active' }}" href="{{ route('server.index', $server->uuidShort) }}">
@@ -176,8 +164,15 @@
                </ul>
                @if(Gate::allows('view-startup', $server) || Gate::allows('access-sftp', $server) ||  Gate::allows('view-allocations', $server))
                <hr class="my-3">
-               <h6 class="navbar-heading text-muted">伺服器管理</h6>
+               <h6 class="navbar-heading text-muted">Server Configuration</h6>
                <ul class="navbar-nav mb-md-3">
+                  @can('view-name', $server)
+                  <li class="nav-item">
+                     <a class="nav-link {{ Route::currentRouteName() !== 'server.settings.name' ?: 'active' }}" href="{{ route('server.settings.name', $server->uuidShort) }}">
+                     <i class="fas fa-tag"></i> @lang('navigation.server.server_name')
+                     </a>
+                  </li>
+                  @endcan
                   @can('view-allocations', $server)
                   <li class="nav-item">
                      <a class="nav-link {{ Route::currentRouteName() !== 'server.settings.allocation' ?: 'active' }}" href="{{ route('server.settings.allocation', $server->uuidShort) }}">
@@ -198,20 +193,6 @@
                      <i class="fas fa-code"></i> @lang('navigation.server.startup_parameters')
                      </a>
                   </li>
-                  @endcan
-                  @if ($server->egg_id == 1 || $server->egg_id == 2 || $server->egg_id == 3 || $server->egg_id == 4 || $server->egg_id == 5)
-                  <li class="nav-item">
-                     <a class="nav-link {{ Route::currentRouteName() !== 'server.settings.version' ?: 'active' }}" href="{{ route('server.settings.version', $server->uuidShort) }}">
-                     <i class="fas fa-angle-right"></i> 伺服器核心更換
-                     </a>
-                  </li>
-                  @endif
-                  @can('view-backup', $server)
-	               <li @if(starts_with(Route::currentRouteName(), 'server.backup')) class="active" @endif>
-		            <a class="nav-link" href="{{ route('server.backup', $server->uuidShort)}}">
-			         <i class="fa fa-folder"></i> <span>備份</span>
-		            </a>
-	               </li>
                   @endcan
                </ul>
                @endif
@@ -258,7 +239,7 @@
                      </a>
                      <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-right">
                         <div class=" dropdown-header noti-title">
-                           <h6 class="text-overflow m-0">歡迎使用｜目前權限：租用者</h6>
+                           <h6 class="text-overflow m-0">Welcome!</h6>
                         </div>
                         <a href="{{ route('account') }}" class="dropdown-item">
                         <i class="fas fa-fw fa-user"></i>
@@ -291,15 +272,15 @@
                            <div class="card-body">
                               <div class="row">
                                  <div class="col">
-                                    <h5 class="card-title text-uppercase text-muted mb-0">伺服器</h5>
+                                    <h5 class="card-title text-uppercase text-muted mb-0">Server</h5>
                                     <span class="h2 font-weight-bold mb-0">{{ $server->name }}</span>
                                  </div>
-                                 <div class="col-auto" id="server_status_icon" data-toggle="tooltip" data-placement="top" title="正在取得資訊">
+                                 <div class="col-auto" id="server_status_icon" data-toggle="tooltip" data-placement="top" title="Retrieving">
                                     <div class="icon icon-shape text-white rounded-circle shadow bg-default"><i class="fas fa-circle-notch fa-spin"></i></div>
                                  </div>
                               </div>
                               <p class="mt-3 mb-0 text-muted text-sm">
-                                 <span class="">您目前正在監視這個伺服器</span>
+                                 <span class="">You're currently viewing this server.</span>
                               </p>
                            </div>
                         </div>
@@ -310,10 +291,10 @@
                            <div class="card-body" style="min-height: 120px;">
                               <div class="row">
                                  <div class="col">
-                                    <h5 class="card-title text-uppercase text-muted mb-0">伺服器狀態</h5>
-                                    <span id="server_stats_status"><span class="h4 font-weight-bold mb-0">正在取得資訊<span></span>
+                                    <h5 class="card-title text-uppercase text-muted mb-0">Status</h5>
+                                    <span id="server_stats_status"><span class="h4 font-weight-bold mb-0">Retrieving<span></span>
                                  </div>
-                                 <div class="col-auto" id="server_status_icon" data-toggle="tooltip" data-placement="top" title="正在取得資訊">
+                                 <div class="col-auto" id="server_status_icon" data-toggle="tooltip" data-placement="top" title="Retrieving">
                                     <div class="icon icon-shape text-white rounded-circle shadow bg-default"><i class="fas fa-circle-notch fa-spin"></i></div>
                                  </div>
                               </div>
@@ -322,7 +303,7 @@
                                  {{$server->name}}<br>
                                  <b>Node: </b>{{$server->getRelation('node')->name}}<br>
                                  <b>Server ID: </b>{{$server->uuidShort}}<br>
-                                 ">將游標停留在此段字上來取得更多資訊</span>
+                                 ">Hover for Information</span>
                               </p>
                            </div>
                         </div>
@@ -332,7 +313,7 @@
                            <div class="card-body" style="min-height: 120px;">
                               <div class="row">
                                  <div class="col">
-                                    <h5 class="card-title text-uppercase text-muted mb-0">記憶體</h5>
+                                    <h5 class="card-title text-uppercase text-muted mb-0">Memory</h5>
                                     <span class="{{ $server->memory > 0 ? 'h2' : 'h4' }} font-weight-bold mb-0">
                                       @if($server->memory > 0)
                                       <span id="server_stats_memory">0</span>%
@@ -350,9 +331,9 @@
                               <p class="mt-3 mb-0 text-muted text-sm">
                                  <span class="">
                                  @if($server->memory > 0)
-                                 以 <strong>百分比</strong> 為單位
+                                 Measured in Percentage
                                  @else
-                                 以 <strong>MegaBytes(MB)</strong> 為單位
+                                 Measured in Megabytes
                                  @endif
                                </span>
                               </p>
@@ -374,7 +355,7 @@
                                 </div>
                               </div>
                               <p class="mt-3 mb-0 text-muted text-sm">
-                                 <span class="">以 <strong>百分比</strong> 為單位</span>
+                                 <span class="">Measured in Percentage</span>
                               </p>
                            </div>
                         </div>
@@ -384,7 +365,7 @@
                            <div class="card-body" style="min-height: 120px;">
                               <div class="row">
                                 <div class="col">
-                                   <h5 class="card-title text-uppercase text-muted mb-0">硬碟</h5>
+                                   <h5 class="card-title text-uppercase text-muted mb-0">Disk</h5>
                                    <span class="{{ $server->memory > 0 ? 'h2' : 'h4' }} font-weight-bold mb-0">
                                      @if($server->disk > 0)
                                      <span id="server_stats_disk">0</span>%
@@ -402,9 +383,9 @@
                               <p class="mt-3 mb-0 text-muted text-sm">
                                 <span class="">
                                  @if($server->disk > 0)
-                                 以 <strong>百分比</strong> 為單位
+                                 Measured in Percentage
                                  @else
-                                 以 <strong>MegaBytes(MB)</strong> 為單位
+                                 Measured in Megabytes
                                  @endif
                                 </span>
                               </p>
@@ -457,12 +438,12 @@
 
                var that = this;
                swal({
-                   title: '您確定要登出面板？',
+                   title: 'Do you want to log out?',
                    type: 'warning',
                    showCancelButton: true,
                    confirmButtonColor: '#d9534f',
                    cancelButtonColor: '#d33',
-                   confirmButtonText: '登出'
+                   confirmButtonText: 'Log out'
                }, function () {
                    window.location = $(that).attr('href');
                });

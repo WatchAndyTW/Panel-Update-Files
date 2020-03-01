@@ -27,7 +27,7 @@
                   <h3 class="mb-0">@lang('base.index.list')</h3>
                </div>
                <div class="col text-right">
-                  <a href="https://www.amtz.xyz/cart.php" class="btn btn-sm btn-primary">訂購新的伺服器</a>
+                  <a href="#" class="btn btn-sm btn-primary">Order New</a>
                </div>
             </div>
          </div>
@@ -40,7 +40,7 @@
                      <th scope="col">@lang('strings.node')</th>
                      <th scope="col" class="d-none d-lg-table-cell">@lang('strings.memory')</th>
                      <th scope="col" class="d-none d-lg-table-cell">@lang('strings.cpu')</th>
-                     <th scope="col" class="d-none d-lg-table-cell">儲存空間</th>
+                     <th scope="col" class="d-none d-lg-table-cell">@lang('strings.disk')</th>
                      <th scope="col">@lang('strings.connection')</th>
                      <th scope="col">@lang('strings.relation')</th>
                      <th scope="col">@lang('strings.status')</th>
@@ -74,9 +74,9 @@
                             @endif
                          </td>
                          @if($server->node->maintenance_mode)
-                            <td ><span class="badge badge-dot"> <i class="bg-warning"></i> 維護中 </span></td>
+                            <td ><span class="badge badge-dot"> <i class="bg-warning"></i> Maintenance </span></td>
                          @else
-                            <td data-action="status"><span class="badge badge-dot"> <i class="bg-default"></i> 取得資訊中 </span></td>
+                            <td data-action="status"><span class="badge badge-dot"> <i class="bg-default"></i> Retrieving </span></td>
                          @endif
                       </tr>
                   @endforeach

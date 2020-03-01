@@ -34,9 +34,9 @@
    <body class="bg-default">
       <div class="main-content">
          <nav class="navbar navbar-top navbar-horizontal navbar-expand-md navbar-dark">
-            <div class="container px-2">
-               <img src="https://i.imgur.com/VpT2riZ.png" height="60" width="230">
+            <div class="container px-4">
                <a class="navbar-brand" href="{{ route('index') }}">
+               <img src="{!! Theme::url('img/logo-white.png?t={cache-version}') !!}">
                </a>
                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapse-main" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                <span class="navbar-toggler-icon"></span>
@@ -44,12 +44,12 @@
                <div class="collapse navbar-collapse" id="navbar-collapse-main">
                   <div class="navbar-collapse-header d-md-none">
                      <div class="row">
-                        <div class="col-10 collapse-brand">
+                        <div class="col-6 collapse-brand">
                            <a href="{{ route('index') }}">
-                           <img src="https://i.imgur.com/VpT2riZ.png" height="60" width="230">
+                           <img src="{!! Theme::url('img/logo.png?t={cache-version}') !!}">
                            </a>
                         </div>
-                        <div class="col-10 collapse-close">
+                        <div class="col-6 collapse-close">
                            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse-main" aria-controls="sidenav-main" aria-expanded="false" aria-label="Toggle sidenav">
                            <span></span>
                            <span></span>
@@ -59,17 +59,21 @@
                   </div>
                   <ul class="navbar-nav ml-auto">
                      <li class="nav-item">
-                        <a class="nav-link nav-link-icon" href="https://www.amtz.xyz/">
+                        <a class="nav-link nav-link-icon" href="#">
                         <i class="fas fa-shopping-cart"></i>
-                        <span class="nav-link-inner--text">官網</span>
+                        <span class="nav-link-inner--text">Client Area</span>
                         </a>
                      </li>
                      <li class="nav-item">
-                        <a class="nav-link nav-link-icon" href="https://www.amtz.xyz/submitticket.php">
+                        <a class="nav-link nav-link-icon" href="#">
                         <i class="fas fa-life-ring"></i>
-                        <span class="nav-link-inner--text">遇到問題了嗎？</span>
+                        <span class="nav-link-inner--text">Support Center</span>
                         </a>
                      </li>
+                     <li class="nav-item">
+                        <a class="nav-link nav-link-icon" href="{{ route('index') }}">
+                        <i class="fas fa-th"></i>
+                        <span class="nav-link-inner--text">Control Panel</span>
                         </a>
                      </li>
                   </ul>
@@ -83,13 +87,13 @@
             <div class="row align-items-center justify-content-xl-between">
                <div class="col-xl-6">
                   <div class=" text-center text-xl-left login-copyright">
-                     Copyright &copy; {{ date('Y') }} <a href="https://www.amtz.xyz/" class="font-weight-bold" target="_blank">{{ config('app.name', 'Pterodactyl') }}</a>
+                     Copyright &copy; {{ date('Y') }} <a href="#" class="font-weight-bold" target="_blank">{{ config('app.name', 'Pterodactyl') }}</a>
                   </div>
                </div>
                <div class="col-xl-6">
                   <ul class="nav nav-footer justify-content-center justify-content-xl-end">
                      <li class="nav-item login-copyright">
-                        中文翻譯 by <a href="https://www.amtz.xyz/" class="font-weight-bold" target="_blank">Amtz Hosting Team</a></a> Proudly powered by <a href="https://pterodactyl.io" class="font-weight-bold" target="_blank">Pterodactyl Software
+                        <a href="https://pterodactyl.io/" class="nav-link" target="_blank">Proudly powered by Pterodactyl Software</a>
                      </li>
                   </ul>
                </div>

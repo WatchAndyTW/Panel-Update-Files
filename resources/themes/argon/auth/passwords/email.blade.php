@@ -6,7 +6,7 @@
 @extends('layouts.auth')
 
 @section('title')
-忘記密碼
+Forgot Password
 @endsection
 
 @section('content')
@@ -15,8 +15,8 @@
       <div class="header-body text-center mb-7">
          <div class="row justify-content-center">
             <div class="col-lg-5 col-md-6">
-               <h1 class="text-white">歡迎使用 Amtz Hosting!</h1>
-               <p class="text-lead text-white">忘記密碼了嗎？在此救援您的帳號吧！</p>
+               <h1 class="text-white">Welcome!</h1>
+               <p class="text-lead text-white">This is our powerful and intuitive control panel where you can easily manage your hosting services.</p>
             </div>
          </div>
       </div>
@@ -53,7 +53,7 @@
          <div class="card bg-secondary shadow border-0">
             <div class="card-body px-lg-5 py-lg-5">
                <div class="text-center text-muted mb-4 mt--3">
-                  <small>需要您的電子郵件才能繼續救援您的帳號</small>
+                  <small>Enter your email address in order to continue.</small>
                </div>
                <form role="form" id="resetForm" action="{{ route('auth.password') }}" method="POST">
                   <div class="form-group mb-3">
@@ -73,8 +73,10 @@
          </div>
          <div class="row mt-3">
             <div class="col-6">
-               <a href="{{ route('index') }}" class="text-light"><small>我記得帳號，我要登入</small></a>
+               <a href="{{ route('index') }}" class="text-light"><small>Sign in</small></a>
             </div>
+            <div class="col-6 text-right">
+               <a href="#" class="text-light"><small>Not a customer yet?</small></a>
             </div>
          </div>
       </div>
@@ -93,30 +95,3 @@
     </script>
     @endif
 @endsection
-
-<!-- Load Facebook SDK for JavaScript -->
-<div id="fb-root"></div>
-      <script>
-        window.fbAsyncInit = function() {
-          FB.init({
-            xfbml            : true,
-            version          : 'v5.0'
-          });
-        };
-
-        (function(d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) return;
-        js = d.createElement(s); js.id = id;
-        js.src = 'https://connect.facebook.net/zh_TW/sdk/xfbml.customerchat.js';
-        fjs.parentNode.insertBefore(js, fjs);
-      }(document, 'script', 'facebook-jssdk'));</script>
-
-      <!-- Your customer chat code -->
-      <div class="fb-customerchat"
-        attribution=setup_tool
-        page_id="106025764198380"
-  theme_color="#44bec7"
-  logged_in_greeting="您好！請問需要什麼服務呢？"
-  logged_out_greeting="您好！請登入 Facebook 來取用支援服務喔">
-      </div>

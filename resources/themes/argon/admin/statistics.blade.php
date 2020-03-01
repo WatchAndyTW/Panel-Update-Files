@@ -4,7 +4,7 @@
 Statistics Overview
 @endsection
 @section('content-header')
-<h1>面板總覽<small>Monitor your panel usage.</small></h1>
+<h1>Statistics Overview<small>Monitor your panel usage.</small></h1>
 <ol class="breadcrumb">
    <li><a href="{{ route('admin.index') }}">Admin</a></li>
    <li class="active">Statistics</li>
@@ -17,7 +17,7 @@ Statistics Overview
          <div class="card-header border-transparent">
             <div class="row align-items-center">
                <div class="col">
-                  <h3 class="mb-0">系統資訊</h3>
+                  <h3 class="mb-0">System Information</h3>
                </div>
             </div>
          </div>
@@ -38,7 +38,7 @@ Statistics Overview
          <div class="card-body">
             <div class="row">
                <div class="col">
-                  <h5 class="card-title text-uppercase text-muted mb-0">伺服器數量</h5>
+                  <h5 class="card-title text-uppercase text-muted mb-0">Servers</h5>
                   <span class="h2 font-weight-bold mb-0">{{ count($servers) }}</span>
                </div>
                <div class="col-auto">
@@ -56,7 +56,7 @@ Statistics Overview
          <div class="card-body">
             <div class="row">
                <div class="col">
-                  <h5 class="card-title text-uppercase text-muted mb-0">已使用記憶體(MB)</h5>
+                  <h5 class="card-title text-uppercase text-muted mb-0">Total used Memory</h5>
                   <span class="h2 font-weight-bold mb-0">{{ $totalServerRam }} MB</span>
                </div>
                <div class="col-auto">
@@ -66,7 +66,7 @@ Statistics Overview
                </div>
             </div>
             <p class="mt-0 mb-0 text-muted text-sm" style="margin-top: -.19rem!important;">
-               <span>單位為Megabytes</span>
+               <span>Measured in Megabytes</span>
             </p>
          </div>
       </div>
@@ -74,7 +74,7 @@ Statistics Overview
          <div class="card-body">
             <div class="row">
                <div class="col">
-                  <h5 class="card-title text-uppercase text-muted mb-0">已使用磁碟空間(MB)</h5>
+                  <h5 class="card-title text-uppercase text-muted mb-0">Total used Disk</h5>
                   <span class="h2 font-weight-bold mb-0">{{ $totalServerDisk }} MB</span>
                </div>
                <div class="col-auto">
@@ -84,7 +84,7 @@ Statistics Overview
                </div>
             </div>
             <p class="mt-0 mb-0 text-muted text-sm" style="margin-top: -.19rem!important;">
-               <span>單位為Megabytes</span>
+               <span>Measured in Megabytes</span>
             </p>
          </div>
       </div>
@@ -96,7 +96,7 @@ Statistics Overview
          <div class="card-header border-transparent">
             <div class="row align-items-center">
                <div class="col">
-                  <h3 class="mb-0">節點</h3>
+                  <h3 class="mb-0">Nodes</h3>
                </div>
             </div>
          </div>
@@ -117,7 +117,7 @@ Statistics Overview
          <div class="card-body">
             <div class="row">
                <div class="col">
-                  <h5 class="card-title text-uppercase text-muted mb-0">記憶體數量(MB)</h5>
+                  <h5 class="card-title text-uppercase text-muted mb-0">Total RAM</h5>
                   <span class="h2 font-weight-bold mb-0">{{ $totalNodeRam }} MB</span>
                </div>
                <div class="col-auto">
@@ -127,7 +127,7 @@ Statistics Overview
                </div>
             </div>
             <p class="mt-0 mb-0 text-muted text-sm" style="margin-top: -.19rem!important;">
-               <span>單位為Megabytes</span>
+               <span>Measured in Megabytes</span>
             </p>
          </div>
       </div>
@@ -135,7 +135,7 @@ Statistics Overview
          <div class="card-body">
             <div class="row">
                <div class="col">
-                  <h5 class="card-title text-uppercase text-muted mb-0">磁碟空間數量(MB)</h5>
+                  <h5 class="card-title text-uppercase text-muted mb-0">Total Disk Space</h5>
                   <span class="h2 font-weight-bold mb-0">{{ $totalNodeDisk }} MB</span>
                </div>
                <div class="col-auto">
@@ -145,7 +145,7 @@ Statistics Overview
                </div>
             </div>
             <p class="mt-0 mb-0 text-muted text-sm" style="margin-top: -.19rem!important;">
-               <span>單位為Megabytes</span>
+               <span>Measured in Megabytes</span>
             </p>
          </div>
       </div>
@@ -153,7 +153,7 @@ Statistics Overview
          <div class="card-body">
             <div class="row">
                <div class="col">
-                  <h5 class="card-title text-uppercase text-muted mb-0">節點連結輟數量</h5>
+                  <h5 class="card-title text-uppercase text-muted mb-0">Total Allocations</h5>
                   <span class="h2 font-weight-bold mb-0">{{ $totalAllocations }}</span>
                </div>
                <div class="col-auto">
@@ -175,7 +175,7 @@ Statistics Overview
          <div class="card-body">
             <div class="row">
                <div class="col">
-                  <h5 class="card-title text-uppercase text-muted mb-0">腳本數量</h5>
+                  <h5 class="card-title text-uppercase text-muted mb-0">Total Eggs</h5>
                   <span class="h2 font-weight-bold mb-0">{{ $eggsCount }}</span>
                </div>
                <div class="col-auto">
@@ -195,7 +195,7 @@ Statistics Overview
          <div class="card-body">
             <div class="row">
                <div class="col">
-                  <h5 class="card-title text-uppercase text-muted mb-0">使用者人數</h5>
+                  <h5 class="card-title text-uppercase text-muted mb-0">Total Users</h5>
                   <span class="h2 font-weight-bold mb-0">{{ $usersCount }}</span>
                </div>
                <div class="col-auto">
@@ -215,7 +215,7 @@ Statistics Overview
          <div class="card-body">
             <div class="row">
                <div class="col">
-                  <h5 class="card-title text-uppercase text-muted mb-0">節點數量</h5>
+                  <h5 class="card-title text-uppercase text-muted mb-0">Total Nodes</h5>
                   <span class="h2 font-weight-bold mb-0">{{ count($nodes) }}</span>
                </div>
                <div class="col-auto">
@@ -235,7 +235,7 @@ Statistics Overview
          <div class="card-body">
             <div class="row">
                <div class="col">
-                  <h5 class="card-title text-uppercase text-muted mb-0">資料庫數量</h5>
+                  <h5 class="card-title text-uppercase text-muted mb-0">Total Databases</h5>
                   <span class="h2 font-weight-bold mb-0">{{ $databasesCount }}</span>
                </div>
                <div class="col-auto">

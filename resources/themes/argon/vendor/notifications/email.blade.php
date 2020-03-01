@@ -140,7 +140,7 @@ $style = [
 
                                         <!-- Salutation -->
                                         <p style="{{ $style['paragraph'] }}">
-                                            {{ config('app.name') }} 敬啟
+                                            Regards,<br>{{ config('app.name') }}
                                         </p>
 
                                         <!-- Sub Copy -->
@@ -149,7 +149,8 @@ $style = [
                                                 <tr>
                                                     <td style="{{ $fontFamily }}">
                                                         <p style="{{ $style['paragraph-sub'] }}">
-                                                            如果您無法點擊 "{{ $actionText }}" 按鈕，請將以下連結複製至您的瀏覽器:
+                                                            If you’re having trouble clicking the "{{ $actionText }}" button,
+                                                            copy and paste the URL below into your web browser:
                                                         </p>
 
                                                         <p style="{{ $style['paragraph-sub'] }}">

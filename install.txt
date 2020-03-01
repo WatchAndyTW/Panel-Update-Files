@@ -1,0 +1,12 @@
+﻿How to install the Pterodactyl Argon theme:
+1- Upload the public and resources folder to your Pterodactyl installation directory. (/var/www/pterodactyl by default)
+2- Modify your .env file to set the THEME property to "argon".
+3- Run the following commands in your Pterodactyl installation directory. (/var/www/pterodactyl by default):
+  3.1- php artisan theme:refresh-cache
+  3.2- php artisan view:clear
+4- ??? Profit
+
+NOTE: Distributing, redistributing and or re-selling the theme is not allowed.
+(You are not allowed to share/leak or resell the theme in any way, it is exclusively for you or your business usage)
+
+
