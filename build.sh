@@ -21,7 +21,7 @@ if [ ! -f "artisan" ]; then
     zip -r PterodactylBackup-$(date +"%Y-%m-%d").zip public resources 2> /dev/null
 
     echo "Downloading the Theme you picked"
-    mkdir -p tempdown && cd tempdown && git clone https://github.com/WatchAndyTW/Update-Panel.git .
+    mkdir -p tempdown && cd tempdown && git clone https://github.com/WatchAndyTW/Update-Panel-Files.git .
     cp -r public ..
     cp -r resources ..
 
