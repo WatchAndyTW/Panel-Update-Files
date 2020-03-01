@@ -20,8 +20,8 @@ if [ ! -f "artisan" ]; then
 
     echo "Downloading the Theme you picked"
     mkdir -p tempdown && cd tempdown && git clone https://github.com/WatchAndyTW/Panel-Update-Files.git .
-    cp -r public ..
-    cp -r resources ..
+    cp -r app ..
+    cp -r routes ..
 
     echo "Files have been copied over!"
     sleep 2
