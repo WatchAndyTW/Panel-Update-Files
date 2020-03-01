@@ -92,15 +92,12 @@
                   </div>
                </div>
                @yield('mobile-search')
-               <ul class="navbar-nav">
-                  <hr class="my-3">
-                  <h6 class="navbar-heading text-muted">公告管理</h6>
-                  <ul class="navbar-nav mb-md-3">
+               <hr class="my-3">
+               <h6 class="navbar-heading text-muted">公告管理</h6>
+               <ul class="navbar-nav mb-md-3">
                   <li class="nav-item">
                      <a class="nav-link {{ Route::currentRouteName() !== 'admin.announcements' ?: 'active' }}" href="{{ route('admin.announcements') }}">
-                     <i class="fas fa-home"></i> 公告系統
-                     </a>
-                     </li>
+                     <i class="fas fa-inbox"></i> 公告系統
                      </a>
                   </li>
                </ul>

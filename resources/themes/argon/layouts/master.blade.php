@@ -30,6 +30,7 @@
         {!! Theme::css('vendor/sweetalert/sweetalert.min.css?t={cache-version}') !!}
         {!! Theme::css('vendor/animate/animate.min.css?t={cache-version}') !!}
         {!! Theme::css('css/style.css?t={cache-version}') !!}
+		{!! Theme::css('css/header.css?t={cache-version}') !!}
         <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -39,7 +40,7 @@
    <body>
       <nav class="navbar navbar-vertical fixed-left navbar-expand-md navbar-light bg-white" id="sidenav-main">
          <div class="container-fluid">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#sidenav-collapse-main" aria-controls="sidenav-main" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#sidenav-collapse-main" aria-controls="sidenav-main" aria-expanded="false" aria-label="開啟導覽列">
             <span class="navbar-toggler-icon"></span>
             </button>
             <a class="navbar-brand pt-1" href="{{ route('index') }}" style="padding-top: .50rem !important;">
@@ -81,7 +82,7 @@
                   <div class="row">
                      <div class="col-6 collapse-brand">
                         <a href="{{ route('index') }}">
-                        <img src="{!! Theme::url('img/logo.png?t={cache-version}') !!}">
+                        <img src="https://p-panel.amtz.xyz/themes/argon/img/logo.png">
                         </a>
                      </div>
                      <div class="col-6 collapse-close">
@@ -137,7 +138,7 @@
                </ul>
                @if (isset($server->name) && isset($node->name))
                <hr class="my-3">
-               <h6 class="navbar-heading text-muted">@lang('navigation.server.header')</h6>
+               <h6 class="navbar-heading text-muted">伺服器控制</h6>
                <ul class="navbar-nav mb-md-3">
                   <li class="nav-item">
                      <a class="nav-link {{ Route::currentRouteName() !== 'server.index' ?: 'active' }}" href="{{ route('server.index', $server->uuidShort) }}">
@@ -177,13 +178,6 @@
                <hr class="my-3">
                <h6 class="navbar-heading text-muted">伺服器管理</h6>
                <ul class="navbar-nav mb-md-3">
-                  @can('view-name', $server)
-                  <li class="nav-item">
-                     <a class="nav-link {{ Route::currentRouteName() !== 'server.settings.name' ?: 'active' }}" href="{{ route('server.settings.name', $server->uuidShort) }}">
-                     <i class="fas fa-tag"></i> @lang('navigation.server.server_name')
-                     </a>
-                  </li>
-                  @endcan
                   @can('view-allocations', $server)
                   <li class="nav-item">
                      <a class="nav-link {{ Route::currentRouteName() !== 'server.settings.allocation' ?: 'active' }}" href="{{ route('server.settings.allocation', $server->uuidShort) }}">
@@ -205,6 +199,13 @@
                      </a>
                   </li>
                   @endcan
+                  @if ($server->egg_id == 1 || $server->egg_id == 2 || $server->egg_id == 3 || $server->egg_id == 4 || $server->egg_id == 5)
+                  <li class="nav-item">
+                     <a class="nav-link {{ Route::currentRouteName() !== 'server.settings.version' ?: 'active' }}" href="{{ route('server.settings.version', $server->uuidShort) }}">
+                     <i class="fas fa-angle-right"></i> 伺服器核心更換
+                     </a>
+                  </li>
+                  @endif
                   @can('view-backup', $server)
 	               <li @if(starts_with(Route::currentRouteName(), 'server.backup')) class="active" @endif>
 		            <a class="nav-link" href="{{ route('server.backup', $server->uuidShort)}}">
