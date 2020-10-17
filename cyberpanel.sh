@@ -635,7 +635,7 @@ elif echo $OUTPUT | grep -q "Ubuntu 18.04" ; then
 		exit
 	fi
 elif echo $OUTPUT | grep -q "Ubuntu 16.04" ; then
-	if uname -m | grep -q 32 ; then
+	if uname -m | grep -q 64 ; then
 	echo -e "\nDetecting Ubuntu 16.04 ...\n"
 	SERVER_OS="Ubuntu"
 	else
