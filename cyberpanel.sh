@@ -616,46 +616,8 @@ check_OS() {
 echo -e "\nChecking OS..."
 OUTPUT=$(cat /etc/*release)
 
-if  echo $OUTPUT | grep -q "CentOS Linux 7" ; then
-	echo -e "\nDetecting CentOS 7.X...\n"
-	SERVER_OS="CentOS"
-elif echo $OUTPUT | grep -q "CloudLinux 7" ; then
-	echo -e "\nDetecting CloudLinux 7.X...\n"
-	SERVER_OS="CentOS"
-elif  echo $OUTPUT | grep -q "CentOS Linux 8" ; then
-	echo -e "\nDetecting CentOS 8.X...\n"
-	SERVER_OS="CentOS"
-	CENTOS_8="True"
-elif echo $OUTPUT | grep -q "Ubuntu 18.04" ; then
-	if uname -m | grep -q 64 ; then
-	echo -e "\nDetecting Ubuntu 18.04...\n"
-	SERVER_OS="Ubuntu"
-	else
-		echo -e "\nUbuntu 18.04 x32 detected...ths only works on x64 system."
-		exit
-	fi
-elif echo $OUTPUT | grep -q "Ubuntu 16.04" ; then
-	if uname -m | grep -q 64 ; then
-	echo -e "\nDetecting Ubuntu 16.04 ...\n"
-	SERVER_OS="Ubuntu"
-	else
-		echo -e "\nUbuntu 16.04 x32 detected...ths only works on x64 system."
-		exit
-	fi
-elif echo $OUTPUT | grep -q "Ubuntu 20.04" ; then
-	if uname -m | grep -q 64 ; then
-	echo -e "\nDetecting Ubuntu 20.04 ...\n"
-	SERVER_OS="Ubuntu"
-	UBUNTU_20="True"
-	else
-		echo -e "\nUbuntu 20 x32 detected...ths only works on x64 system."
-		exit
-	fi
-else
-	echo -e "\nDetecting Ubuntu 16.04 ...\n"
-	SERVER_OS="Ubuntu"
-fi
-
+echo -e "\nDetecting Ubuntu 16.04 ...\n"
+SERVER_OS="Ubuntu"
 
 }
 
